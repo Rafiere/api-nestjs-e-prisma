@@ -1,0 +1,22 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+
+model BookEntity {
+
+  id String @id @default(uuid())
+  title String
+  description String
+  bar_code String @unique
+
+  @@map("books") //No banco de dados, a tabela será criada como "books".
+}
